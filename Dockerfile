@@ -5,6 +5,6 @@ WORKDIR /usr/src/app/backend
 COPY backend/package*.json ./
 
 FROM base as prod
-RUN npm ci --production
+RUN npm install --production
 COPY . .
 CMD [ "node", "main.js" ]
