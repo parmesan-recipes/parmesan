@@ -4,7 +4,8 @@ WORKDIR /usr/src/app/backend
 
 COPY backend/package*.json ./
 
-FROM base as prod
-RUN npm ci --production
+FROM base as test
+RUN npm ci
 COPY . .
-CMD [ "node", "main.js" ]
+RUN npm run lint
+RUN npm run test
