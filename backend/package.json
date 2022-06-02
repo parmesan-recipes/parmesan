@@ -1,0 +1,19 @@
+{
+  "name": "parmesan-backend",
+  "version": "0.0.1",
+  "dependencies": {
+    "uuid": "^8.3.2",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0"
+  },
+  "scripts": {
+    "lint": "standard",
+    "test": "nyc --reporter=text --lines 80 --per-file mocha ./**/*.js",
+    "start": "node main.js"
+  },
+  "license": "MIT"
+}
