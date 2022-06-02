@@ -1,1 +1,1 @@
-# recipie-js
+# reci-pie
