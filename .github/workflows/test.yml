@@ -1,0 +1,17 @@
+name: Run Tests and Linting
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build and run tests and linting
+        uses: docker/build-push-action@v3
+        with:
+          push: false
+          file: ./Dockerfile.test
