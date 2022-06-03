@@ -1,10 +1,10 @@
-import React, {createContext, useState} from 'react'
+import React, { createContext, useState } from 'react'
 
 export const UserContext = createContext(null)
 
-const {Provider} = UserContext
+const { Provider } = UserContext
 
-const UserProvider = ({children}) => {
+const UserProvider = ({ children }) => {
   const [state, setState] = useState(null)
   return <Provider value={[state, setState]}>{children}</Provider>
 }
