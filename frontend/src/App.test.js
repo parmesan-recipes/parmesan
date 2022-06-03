@@ -7,7 +7,7 @@ import { Router } from 'react-router-dom'
 test('Renders basic app', () => {
   const history = createMemoryHistory()
   render(
-    <Router location={history.location} navigator={history}>
+    <Router history={history}>
       <App />
     </Router>
   )
@@ -19,7 +19,7 @@ test('Tests 404 for unknown route', () => {
   const history = createMemoryHistory()
   history.push('/ksagf/aksjfhdsf/askjd')
   render(
-    <Router location={history.location} navigator={history}>
+    <Router history={history}>
       <App />
     </Router>
   )
