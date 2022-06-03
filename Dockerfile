@@ -17,3 +17,4 @@ FROM base as prodback
 RUN npm install --production
 COPY ./backend .
 CMD [ "node", "main.js" ]
+EXPOSE 8080/tcp
