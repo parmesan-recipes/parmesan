@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "express": "^4.18.1",
+    "nano": "^10.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
