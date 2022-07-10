@@ -22,14 +22,14 @@ passport.use(new Local(function verify (username, password, cb) {
   })
 }))
 
-passport.serializeUser(function(user, cb) {
-  process.nextTick(function() {
+passport.serializeUser(function (user, cb) {
+  process.nextTick(function () {
     cb(null, { id: user.id, username: user.username })
   })
 })
 
-passport.deserializeUser(function(user, cb) {
-  process.nextTick(function() {
+passport.deserializeUser(function (user, cb) {
+  process.nextTick(function () {
     return cb(null, user)
   })
 })
@@ -39,8 +39,8 @@ authV1.post('/login/password', passport.authenticate('local', {
   failureRedirect: '/login'
 }))
 
-authV1.post('/logout', function(req, res, next) {
-  req.logout(function(err) {
+authV1.post('/logout', function (req, res, next) {
+  req.logout(function (err) {
     if (err) { return next(err) }
     res.redirect('/')
   })
