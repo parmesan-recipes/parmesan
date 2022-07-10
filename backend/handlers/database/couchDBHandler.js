@@ -12,9 +12,26 @@ function checkIfDBExistsAndCreateIfRequired (dbName) {
 }
 
 function createObjectInDB (rowContentsInJson, rowId, tableName) {
+  return checkIfDBExistsAndCreateIfRequired(tableName).then((db) => {
+    return db.insert(rowContentsInJson, rowId)
+  })
+}
+
+function getObjectFromDB (rowId, tableName) {
+  return checkIfDBExistsAndCreateIfRequired(tableName).then((db) => {
+    return db.get(rowId)
+  })
+}
+
+function listObjectsInDB (tableName) {
+  return checkIfDBExistsAndCreateIfRequired(tableName).then((db) => {
+    return db.list()
+  })
 }
 
 module.exports = {
   checkIfDBExistsAndCreateIfRequired,
-  createObjectInDB
+  createObjectInDB,
+  getObjectFromDB,
+  listObjectsInDB
 }
