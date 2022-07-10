@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 *.css
+
+dev_env_vars.sh
+sessions.db

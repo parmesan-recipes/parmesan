@@ -1,12 +1,4 @@
-const couchDB = require('backend/handlers/database/couchDBHandler')
-
-function checkIfTableExistsAndCreateIfRequired (tableName) {
-  if (process.env.DATABASE_TYPE === 'COUCHDB') {
-    return couchDB.checkIfDBExistsAndCreateIfRequired(tableName)
-  } else {
-    return new Error('Unsupported Database Type')
-  }
-}
+const couchDB = require('./couchDBHandler')
 
 function createRowInTable (rowContentsInJson, rowId, tableName) {
   if (process.env.DATABASE_TYPE === 'COUCHDB') {
@@ -16,7 +8,24 @@ function createRowInTable (rowContentsInJson, rowId, tableName) {
   }
 }
 
+function getRowFromTable (rowId, tableName) {
+  if (process.env.DATABASE_TYPE === 'COUCHDB') {
+    return couchDB.getObjectFromDB(rowId, tableName)
+  } else {
+    return new Error('Unsupported Database Type')
+  }
+}
+
+function listObjectsInTable (tableName) {
+  if (process.env.DATABASE_TYPE === 'COUCHDB') {
+    return couchDB.listObjectsInDB(tableName)
+  } else {
+    return new Error('Unsupported Database Type')
+  }
+}
+
 module.exports = {
-  checkIfTableExistsAndCreateIfRequired,
-  createRowInTable
+  createRowInTable,
+  getRowFromTable,
+  listObjectsInTable
 }
