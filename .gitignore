@@ -105,3 +105,6 @@ dist
 
 .idea
 package-lock.json
+
+dev_env_vars.sh
+sessions.db
