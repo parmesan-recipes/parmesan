@@ -12,7 +12,8 @@
     "sass": "^1.52.2",
     "standard": "^17.0.0",
     "react-router-dom": "^6.3.0",
-    "formik": "^2.2.9"
+    "formik": "^2.2.9",
+    "use-async-effect": "^2.2.6"
   },
   "scripts": {
     "start": "react-scripts start",
