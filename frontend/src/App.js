@@ -2,8 +2,8 @@ import { useEffect, useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { UserContext } from './context/UserContext.js'
-import './App.scss'
-import { RecipeView } from './pages/recipeView.js'
+import './styles/App.scss'
+import { RecipeView } from './pages/RecipeView.js'
 
 function App () {
   const [user, setUser] = useContext(UserContext)
@@ -27,13 +27,13 @@ function App () {
   return (
     <div className='app'>
 
-      {JSON.stringify(user ?? 'undefined')}
+      {/* {JSON.stringify(user ?? 'undefined')} */}
 
       <Routes>
         <Route path='/' element={<h1>Parmesan</h1>} />
-  
-        <Route path='/recipe/:recipeId' element={<RecipeView/>}/>
-        
+
+        <Route path='/recipe/:recipeId' element={<RecipeView />} />
+
         <Route path='*' element={<h1>Error 404</h1>} />
       </Routes>
 
