@@ -3,6 +3,8 @@ import { useState } from 'react'
 import useAsyncEffect from 'use-async-effect'
 import { DateTime } from 'luxon'
 import '../styles/RecipeView.scss'
+import { IngredientGroup } from '../components/recipeView/IngredientGroup.js'
+import { StepGroup } from '../components/recipeView/StepGroup.js'
 
 export function RecipeView () {
   const { recipeId } = useParams()
@@ -23,7 +25,7 @@ export function RecipeView () {
       name: 'Spaghetti Bolognese',
       creationDate: 1657463823,
       modificationDate: 1657386596,
-      tags: [{ name: 'spag', color: { r: 255, g: 255, b: 255 } }, { name: 'bol', color: { r: 0, g: 0, b: 0 } }],
+      tags: [{ name: 'spag', color: { r: 255, g: 78, b: 0 } }, { name: 'bol', color: { r: 0, g: 0, b: 0 } }],
       time: {
         prep: 15023,
         cook: 121
@@ -105,27 +107,31 @@ export function RecipeView () {
 
   const foregroundColor = ({ r, g, b }) => {
     const brightness = Math.round((r * 299 + g * 587 + b * 114) / 1000)
-    console.log({ r, g, b, brightness })
     return (brightness > 125) ? 'black' : 'white'
   }
 
   return (
     <main className='RecipeView'>
-      <h2>{recipe.name}</h2>
-      <h6>Creation date: {DateTime.fromSeconds(recipe.creationDate).toLocaleString(DateTime.DATETIME_FULL)}</h6>
-      <h6>Modification date: {DateTime.fromSeconds(recipe.modificationDate).toLocaleString(DateTime.DATETIME_FULL)}</h6>
+      <h2 id="title">{recipe.name}</h2>
+      <h6 id="creationDate">Creation date: {DateTime.fromSeconds(recipe.creationDate).toLocaleString(DateTime.DATETIME_FULL)}</h6>
+      <h6 id="modificationDate">Modification date: {DateTime.fromSeconds(recipe.modificationDate).toLocaleString(DateTime.DATETIME_FULL)}</h6>
 
+      
       <ul id='tags'>
         {recipe.tags.map((tag, index) => {
           return (<li key={index} style={{ backgroundColor: `rgb(${tag.color.r}, ${tag.color.g}, ${tag.color.b})`, color: foregroundColor(tag.color) }}>{tag.name}</li>)
         })}
       </ul>
 
-      <p>Prep time: {fmtDuration(recipe.time.prep)}</p>
-      <p>Cooking time: {fmtDuration(recipe.time.cook)}</p>
-      <p>Total time: {fmtDuration(recipe.time.cook + recipe.time.prep)}</p>
+      
+      <div id="times">
+        <p>Prep time: {fmtDuration(recipe.time.prep)}</p>
+        <p>Cooking time: {fmtDuration(recipe.time.cook)}</p>
+        <p>Total time: {fmtDuration(recipe.time.cook + recipe.time.prep)}</p>
+      </div>
 
-      <ul>
+
+      <ul id="images">
         {recipe.images.map((image) => {
           return (
             <li key={image.url}>
@@ -138,48 +144,24 @@ export function RecipeView () {
         })}
       </ul>
 
+      
       <section>
         <h4>Ingredients</h4>
 
         {recipe.ingredientGroups.map((ingredientGroup, index) => {
           return (
-            <section key={index}>
-              <h5>{ingredientGroup.name}</h5>
-
-              <ul>
-                {ingredientGroup.ingredients.map((ingredient, ingredientIndex) => {
-                  return (
-                    <li key={ingredientIndex} className='ingredient'>
-                      <span>{ingredient.name}</span>
-                      <span>{`${ingredient.amount}${ingredient.unit}`}</span>
-                    </li>
-                  )
-                })}
-              </ul>
-
-            </section>
+            <IngredientGroup ingredientGroup={ingredientGroup} key={index}/>
           )
         })}
       </section>
 
+      
       <section>
         <h4>Method</h4>
 
         {recipe.stepGroups.map((stepGroup, index) => {
           return (
-            <section key={index}>
-              <h5>{stepGroup.name}</h5>
-
-              <ol className='step'>
-                {stepGroup.steps.map((step, stepIndex) => {
-                  return (
-                    <li key={stepIndex} className='step'>
-                      <p>{step.text}</p>
-                    </li>
-                  )
-                })}
-              </ol>
-            </section>
+            <StepGroup stepGroup={stepGroup} key={index}/>
           )
         })}
       </section>
