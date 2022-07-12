@@ -112,26 +112,23 @@ export function RecipeView () {
 
   return (
     <main className='RecipeView'>
-      <h2 id="title">{recipe.name}</h2>
-      <h6 id="creationDate">Creation date: {DateTime.fromSeconds(recipe.creationDate).toLocaleString(DateTime.DATETIME_FULL)}</h6>
-      <h6 id="modificationDate">Modification date: {DateTime.fromSeconds(recipe.modificationDate).toLocaleString(DateTime.DATETIME_FULL)}</h6>
+      <h2 id='title'>{recipe.name}</h2>
+      <h6 id='creationDate'>Creation date: {DateTime.fromSeconds(recipe.creationDate).toLocaleString(DateTime.DATETIME_FULL)}</h6>
+      <h6 id='modificationDate'>Modification date: {DateTime.fromSeconds(recipe.modificationDate).toLocaleString(DateTime.DATETIME_FULL)}</h6>
 
-      
       <ul id='tags'>
         {recipe.tags.map((tag, index) => {
           return (<li key={index} style={{ backgroundColor: `rgb(${tag.color.r}, ${tag.color.g}, ${tag.color.b})`, color: foregroundColor(tag.color) }}>{tag.name}</li>)
         })}
       </ul>
 
-      
-      <div id="times">
+      <div id='times'>
         <p>Prep time: {fmtDuration(recipe.time.prep)}</p>
         <p>Cooking time: {fmtDuration(recipe.time.cook)}</p>
         <p>Total time: {fmtDuration(recipe.time.cook + recipe.time.prep)}</p>
       </div>
 
-
-      <ul id="images">
+      <ul id='images'>
         {recipe.images.map((image) => {
           return (
             <li key={image.url}>
@@ -144,24 +141,22 @@ export function RecipeView () {
         })}
       </ul>
 
-      
       <section>
         <h4>Ingredients</h4>
 
         {recipe.ingredientGroups.map((ingredientGroup, index) => {
           return (
-            <IngredientGroup ingredientGroup={ingredientGroup} key={index}/>
+            <IngredientGroup ingredientGroup={ingredientGroup} key={index} />
           )
         })}
       </section>
 
-      
       <section>
         <h4>Method</h4>
 
         {recipe.stepGroups.map((stepGroup, index) => {
           return (
-            <StepGroup stepGroup={stepGroup} key={index}/>
+            <StepGroup stepGroup={stepGroup} key={index} />
           )
         })}
       </section>
