@@ -1,0 +1,61 @@
+.RecipeView{
+
+	#title {
+		margin: 0;
+	}
+
+	#creationDate, #modificationDate {
+		margin: 0;
+		color: var(--titleColor);
+	}
+
+	#tags{
+		display: flex;
+		justify-content: flex-start;
+
+		li{
+			background-color: black;
+			padding: 2px 4px;
+			border-radius: 25%;
+			margin-right: 5px;
+		}
+	}
+
+	#times{
+		p{
+
+		}
+	}
+
+	#images{
+		display: flex;
+		justify-content: flex-start;
+		overflow-x: auto;
+
+		figure{
+			margin: 0 5px;
+			display: table;
+
+			img, picture{
+				height: 200px;
+			}
+
+			figcaption{
+				display: table-caption;
+				caption-side: bottom;
+			}
+		}
+	}
+
+	.ingredient{
+		display: flex;
+		justify-content: space-between;
+		max-width: 150px;
+	}
+
+	h5{
+		margin: 3px;
+	}
+}
+
+
