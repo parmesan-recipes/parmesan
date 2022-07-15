@@ -1,4 +1,2 @@
-const express = require('express')
-const recipeV1 = express.Router()
-
-module.exports = recipeV1
+import express from 'express'
+export const recipeV1Router = express.Router()

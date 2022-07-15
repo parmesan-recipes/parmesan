@@ -2,9 +2,13 @@
   "name": "parmesan-backend",
   "version": "0.0.1",
   "dependencies": {
+    "connect-sqlite3": "^0.9.13",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-session": "^1.17.3",
     "nano": "^10.0.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "bcrypt": "^5.0.1"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
@@ -15,7 +19,9 @@
   "scripts": {
     "lint": "standard",
     "test": "nyc --reporter=text --lines 80 --per-file mocha ./**/*.js",
-    "start": "node main.js"
+    "start": "node main.js",
+    "start-debug": "source ./dev_env_vars.sh; node main.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }
