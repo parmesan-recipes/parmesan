@@ -5,7 +5,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 
 export function LoginForm () {
   const navigate = useNavigate()
-  const [user, setUser] = useContext(UserContext)
+  const setUser = useContext(UserContext)[1]
 
   const submit = async (values, formik) => {
     console.log(values)
