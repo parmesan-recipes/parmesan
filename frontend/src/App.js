@@ -2,12 +2,13 @@ import { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { UserContext } from './context/UserContext.js'
-import './App.scss'
+import './styles/App.scss'
+import { RecipeView } from './pages/RecipeView.js'
 import { Login } from './pages/Login.js'
 import useAsyncEffect from 'use-async-effect'
 
 function App () {
-  const [user, setUser] = useContext(UserContext)
+  const setUser = useContext(UserContext)[1]
 
   // Check if user is logged in
   useAsyncEffect(async () => {
@@ -21,11 +22,12 @@ function App () {
   return (
     <div className='app'>
 
-      {JSON.stringify(user ?? 'undefined')}
+      {/* {JSON.stringify(user ?? 'undefined')} */}
 
       <Routes>
         <Route path='/' element={<h1>Parmesan</h1>} />
 
+        <Route path='/recipe/:recipeId' element={<RecipeView />} />
         <Route path='/user/login' element={<Login />} />
 
         <Route path='*' element={<h1>Error 404</h1>} />

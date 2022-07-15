@@ -1,0 +1,44 @@
+
+:root {
+	--textColor: black;
+	--bgColor: white;
+	--accentColour: #ee5a24;
+	--titleColor: #2c3e50;
+	--altBgColor: #3498db;
+	--linkColor: blue;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	:root {
+		--bgColor: #1C3041;
+		--textColor: white;
+		--titleColor: #F2D7EE;
+		--altBgColor: #26567E;
+		--linkColor: #92B6B1;
+	}
+}
+
+body{
+	margin: 0;
+	background-color: var(--bgColor);
+	color: var(--textColor);
+}
+main{
+	padding: 10px;
+}
+
+
+
+ul:not(.numberedList), ol:not(.numberedList) {
+	padding: 0;
+
+	li{
+		list-style: none;
+	}
+}
+
+ul, ol{
+	margin: 0;
+}
+
+
