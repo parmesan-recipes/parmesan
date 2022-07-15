@@ -6,7 +6,7 @@ import './styles/App.scss'
 import { RecipeView } from './pages/RecipeView.js'
 
 function App () {
-  const [user, setUser] = useContext(UserContext)
+  const setUser = useContext(UserContext)[1]
 
   // Check user login status
   useEffect(() => {
