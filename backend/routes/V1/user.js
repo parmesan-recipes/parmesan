@@ -13,7 +13,7 @@ function userPublic (user) {
 router.get('/', [auth, (req, res) => {
   getObjectFromDB(req.username, 'users').then((user) => {
     res.send(userPublic(user))
-  }).catch((err) => {
+  }).catch(() => {
     res.status(401).send({})
   })
 }])
@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
     } else {
       res.status(401).send({})
     }
-  }).catch(async (err) => {
+  }).catch(async () => {
     res.status(401).send({})
   })
 })
