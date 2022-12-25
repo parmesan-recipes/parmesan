@@ -8,7 +8,8 @@
     "express-session": "^1.17.3",
     "nano": "^10.0.0",
     "uuid": "^8.3.2",
-    "bcrypt": "^5.0.1"
+    "bcrypt": "^5.0.1",
+    "helmet": "^6.0.1"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
