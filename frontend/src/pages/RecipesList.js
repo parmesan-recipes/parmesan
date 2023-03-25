@@ -40,7 +40,7 @@ export function RecipesList () {
               )
             : (
               <h2>No recipes found!</h2>
-            )
+              )
         }
       </ol>
     </main>
