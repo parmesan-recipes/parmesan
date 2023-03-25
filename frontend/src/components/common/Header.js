@@ -5,7 +5,7 @@ import '../../styles/components/Header.scss'
 import { Link } from 'react-router-dom'
 
 export function Header () {
-  const [user, _] = useContext(UserContext)
+  const user = useContext(UserContext)[0]
   return (
     <header>
       <nav>
