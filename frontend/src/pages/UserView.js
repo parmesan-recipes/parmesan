@@ -4,37 +4,38 @@ import { useParams } from 'react-router-dom'
 import useAsyncEffect from 'use-async-effect';
 import { UserInfo } from '../components/user/UserInfo.js';
 import { useState } from 'react'
+import { RecipeCard } from '../components/recipeView/RecipeCard.js';
 
 export function UserView () {
   const { userId } = useParams();
 
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
+  const [recipes, setRecipes] = useState(null)
 
   useAsyncEffect( async () => {
     setLoading(true)
     setUser(null)
 
-  //   const userResponse = await fetch(`/api/v1/user/${userId}`)
-  //   if (userResponse.ok) {
-  //     userResponse.json().then((user) => {
-  //       setUser(user)
-  //       setLoading(false)
-  //     }).catch((err) => {
-  //       console.error(err)
-  //       setLoading(false)
-  //     })
-  //   } else {
-  //     setLoading(false)
-  //   }
-    setUser({
-      id: "abcde",
-      username: "jdoe",
-      display_name: "Joan Doe",
-      pronouns: "she/they",
-      bio: "I am a cook, let me cook!"
-    })
-    setLoading(false)
+    const userResponse = await fetch(`/api/v1/user/${userId}`)
+    if (userResponse.ok) {
+      userResponse.json().then(async (user) => {
+        setUser(user)
+        const recipeResponse = await fetch(`/api/v1/recipe?username=${userId}`)
+        if (recipeResponse.ok) {
+          recipeResponse.json().then((recipe) => {
+            setRecipes(recipe)
+            setLoading(false)
+          }).catch((err) => {
+            console.error(err)
+          })
+        }
+      }).catch((err) => {
+        console.error(err)
+      })
+    } else {
+      setLoading(false)
+    }
   }, [userId])
 
   if (loading) {
@@ -46,6 +47,31 @@ export function UserView () {
   }
 
   return (
-    <UserInfo user={user} />
+    <main>
+      <UserInfo user={user} />
+
+      <section>
+        {
+          recipes ? (
+            <div id="recipes">
+              <h1>Recipes</h1>
+              <ul>
+                {
+                  recipes.map((recipe, index) => {
+                  return (
+                    <li><RecipeCard recipe={recipe} index={index} /></li>
+                  )
+                  })
+                }
+              </ul>
+            </div>
+          ) : (
+            <h1>User has no recipes</h1>
+          )
+        }
+      </section>
+    </main>
+    
+
   )
 }
