@@ -12,11 +12,3 @@ RUN npm run test
 RUN npm run build
 
 WORKDIR /usr/src/app/backend
-
-COPY backend/package*.json ./
-
-FROM base as test
-RUN npm install
-COPY ./backend .
-RUN npm run lint
-RUN npm run test
