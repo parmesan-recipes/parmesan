@@ -19,6 +19,7 @@
 }
 
 body{
+	font-family: sans-serif;
 	margin: 0;
 	background-color: var(--bgColor);
 	color: var(--textColor);
@@ -27,7 +28,9 @@ main{
 	padding: 10px;
 }
 
-
+a {
+	color: var(--linkColor)
+}
 
 ul:not(.numberedList), ol:not(.numberedList) {
 	padding: 0;
