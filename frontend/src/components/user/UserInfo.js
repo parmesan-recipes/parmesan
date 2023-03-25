@@ -1,7 +1,3 @@
-import { useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
-import { UserContext } from '../../context/UserContext.js'
-
 export function UserInfo (props) {
   const { user } = props
 

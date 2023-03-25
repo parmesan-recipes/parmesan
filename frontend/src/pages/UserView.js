@@ -1,19 +1,17 @@
-import { UserContext } from '../context/UserContext.js'
-import { useContext } from 'react'
-import { useParams } from 'react-router-dom'
-import useAsyncEffect from 'use-async-effect';
-import { UserInfo } from '../components/user/UserInfo.js';
 import { useState } from 'react'
-import { RecipeCard } from '../components/recipeView/RecipeCard.js';
+import { useParams } from 'react-router-dom'
+import useAsyncEffect from 'use-async-effect'
+import { UserInfo } from '../components/user/UserInfo.js'
+import { RecipeCard } from '../components/recipeView/RecipeCard.js'
 
 export function UserView () {
-  const { userId } = useParams();
+  const { userId } = useParams()
 
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
   const [recipes, setRecipes] = useState(null)
 
-  useAsyncEffect( async () => {
+  useAsyncEffect(async () => {
     setLoading(true)
     setUser(null)
 
@@ -52,26 +50,27 @@ export function UserView () {
 
       <section>
         {
-          recipes ? (
-            <div id="recipes">
-              <h1>Recipes</h1>
-              <ul>
-                {
+          recipes
+            ? (
+              <div id='recipes'>
+                <h1>Recipes</h1>
+                <ul>
+                  {
                   recipes.map((recipe, index) => {
-                  return (
-                    <li><RecipeCard recipe={recipe} index={index} /></li>
-                  )
+                    return (
+                      <li key={index}><RecipeCard recipe={recipe} index={index} /></li>
+                    )
                   })
                 }
-              </ul>
-            </div>
-          ) : (
-            <h1>User has no recipes</h1>
-          )
+                </ul>
+              </div>
+              )
+            : (
+              <h1>User has no recipes</h1>
+              )
         }
       </section>
     </main>
-    
 
   )
 }
