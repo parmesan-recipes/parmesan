@@ -8,6 +8,7 @@ import { Login } from './pages/Login.js'
 import { Header } from './components/common/Header.js'
 import useAsyncEffect from 'use-async-effect'
 import { RecipesList } from './pages/RecipesList.js'
+import { UserView } from './pages/UserView.js'
 
 function App () {
   const setUser = useContext(UserContext)[1]
@@ -33,6 +34,7 @@ function App () {
 
         <Route path='/recipe/:recipeId' element={<RecipeView />} />
         <Route path='/user/login' element={<Login />} />
+        <Route path='/user/:userId' element={<UserView />} />
 
         <Route path='/recipes' element={<RecipesList />} />
 
