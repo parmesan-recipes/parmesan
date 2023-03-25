@@ -3,6 +3,7 @@ import path from 'path'
 import session from 'express-session'
 import { v4 as uuidv4 } from 'uuid'
 import sqlite from 'connect-sqlite3'
+import helmet from 'helmet'
 
 import { router as userV1Router } from './routes/V1/user.js'
 import { recipeV1Router } from './routes/V1/recipe.js'
@@ -11,6 +12,8 @@ import * as url from 'url'
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 const app = express()
+
+app.use(helmet())
 
 const SQLiteStore = sqlite(session)
 
