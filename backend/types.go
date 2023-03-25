@@ -1,63 +1,63 @@
 package main
 
 type Recipe struct {
-	id               string
-	name             string
-	creationDate     int
-	modificationDate int
-	tags             []Tag
-	times            Time
-	images           Image
-	ingredientGroups IngredientGroup
-	stepGroups       StepGroup
+	Id               string
+	Name             string
+	CreationDate     int
+	ModificationDate int
+	Tags             []Tag
+	Times            Time
+	Images           []Image
+	IngredientGroups []IngredientGroup
+	StepGroups       []StepGroup
 }
 
 type Tag struct {
-	name   string
-	colour Colour
+	Name   string
+	Colour Colour
 }
 
 type Colour struct {
-	r int
-	g int
-	b int
+	R int
+	G int
+	B int
 }
 
 type Time struct {
-	prep int
-	cook int
+	Prep int
+	Cook int
 }
 
 type Image struct {
-	url string
-	alt string
+	Url string
+	Alt string
 }
 
 type IngredientGroup struct {
-	name        string
-	ingredients []Ingredient
+	Name        string
+	Ingredients []Ingredient
 }
 
 type Ingredient struct {
-	name   string
-	amount string
-	unit   string
+	Name   string
+	Amount int
+	Unit   string
 }
 
 type StepGroup struct {
-	name  string
-	steps []Step
+	Name  string
+	Steps []Step
 }
 
 type Step struct {
-	text string
+	Text string
 }
 
 type User struct {
-	username    string
-	displayName string
-	password    string
-	salt        string
-	pronouns    string
-	bio         string
+	Username    string
+	DisplayName string
+	Password    string
+	Salt        string
+	Pronouns    string
+	Bio         string
 }
