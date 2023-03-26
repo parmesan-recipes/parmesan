@@ -1,56 +1,57 @@
 package main
 
 type Recipe struct {
-	Id               string
-	Name             string
-	CreationDate     int
-	ModificationDate int
-	Tags             []Tag
-	Times            Time
-	Images           []Image
-	IngredientGroups []IngredientGroup
-	StepGroups       []StepGroup
+	Id               string            `json:"id"`
+	Name             string            `json:"name"`
+	CreationDate     int               `json:"creationDate"`
+	ModificationDate int               `json:"modificationDate"`
+	Tags             []Tag             `json:"tags"`
+	Times            Time              `json:"time"`
+	Images           []Image           `json:"images"`
+	IngredientGroups []IngredientGroup `json:"ingredientGroups"`
+	StepGroups       []StepGroup       `json:"stepGroups"`
 }
 
 type Tag struct {
-	Name   string
-	Colour Colour
+	Name   string `json:"name"`
+	Colour Colour `json:"color"`
 }
 
 type Colour struct {
-	R int
-	G int
-	B int
+	R int `json:"r"`
+	G int `json:"g"`
+	B int `json:"b"`
 }
 
 type Time struct {
-	Prep int
-	Cook int
+	Prep int `json:"prep"`
+	Cook int `json:"cook"`
 }
 
 type Image struct {
-	Url string
-	Alt string
+	Url     string `json:"url"`
+	Alt     string `json:"alt"`
+	Caption string `json:"caption"`
 }
 
 type IngredientGroup struct {
-	Name        string
-	Ingredients []Ingredient
+	Name        string       `json:"name"`
+	Ingredients []Ingredient `json:"ingredients"`
 }
 
 type Ingredient struct {
-	Name   string
-	Amount int
-	Unit   string
+	Name   string `json:"name"`
+	Amount int    `json:"amount"`
+	Unit   string `json:"unit"`
 }
 
 type StepGroup struct {
-	Name  string
-	Steps []Step
+	Name  string `json:"name"`
+	Steps []Step `json:"steps"`
 }
 
 type Step struct {
-	Text string
+	Text string `json:"text"`
 }
 
 type User struct {
