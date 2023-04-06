@@ -18,6 +18,14 @@
 	}
 }
 
+.button{
+	position: relative;
+	background-color: var(--accentColour);
+	padding: 3px;
+	border-radius: 6px;
+
+}
+
 body{
 	font-family: sans-serif;
 	margin: 0;

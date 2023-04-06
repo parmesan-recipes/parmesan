@@ -1,0 +1,71 @@
+header{
+	--headerHeight: 6rem;
+
+	position: relative;
+	height: 6rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	background-color: var(--altBgColor);
+
+	.accountButtons{
+		display: flex;
+		justify-content: space-between;
+		align-content: center;
+	}
+
+	nav{
+		display: flex;
+
+		a:not(:first-child){
+			font-size: 2.5rem;
+			height: 6rem;
+			line-height: 6rem;
+			align-self: center;
+			padding: 0 4px;
+
+			&:hover{
+				background-color: var(--accentColour);
+			}
+		}
+	}
+
+	#logo{
+		position: relative;
+		height: calc(var(--headerHeight) * 0.9);
+		margin-left: 0.5rem;
+	}
+
+
+	.iconLink{
+		width: 5rem;
+		height: 5rem;
+		margin-right: 0.5rem;
+		margin-top: 0.5rem;
+
+		:hover{
+			box-shadow: 0 0 10px;
+		}
+
+		img{
+			height: 5rem;
+			border-radius: 50%;
+		}
+	}
+
+	.accountButtons{
+		display: flex;
+
+		a {
+			font-size: 2rem;
+			line-height: 2rem;
+			height: 2rem;
+			text-decoration: none;
+			align-self: center;
+			margin-right: 5px;
+		}
+	}
+
+
+}

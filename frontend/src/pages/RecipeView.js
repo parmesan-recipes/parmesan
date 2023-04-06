@@ -16,7 +16,7 @@ export function RecipeView () {
     setLoading(true)
     setRecipe(null)
 
-    const recipeResponse = await fetch(`http://localhost:8080/api/v1/recipe/${recipeId}`)
+    const recipeResponse = await fetch(`/api/v1/recipe/${recipeId}`)
     if (recipeResponse.ok) {
       recipeResponse.json().then(recipe => {
         setRecipe(recipe)
