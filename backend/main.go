@@ -63,5 +63,5 @@ func main() {
 	router.DELETE("/api/v1/user", func(c *gin.Context) {
 	})*/
 
-	router.Run("localhost:8080")
+	router.Run("0.0.0.0:8080")
 }
