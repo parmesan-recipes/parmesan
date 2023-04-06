@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { UserContext } from '../../context/UserContext.js'
 import '../../styles/components/Header.scss'
+import logo from '../../images/logo.png'
 
 import { Link } from 'react-router-dom'
 
@@ -9,12 +10,17 @@ export function Header () {
   return (
     <header>
       <nav>
-        <ol>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/recipes'>Recipes</Link></li>
-          <li><Link to={user ? `/user/${user.username}` : '/user/login'}>My Profile</Link></li>
-        </ol>
+        <Link to="/"><img src={logo} id="logo" alt="Parmesan logo"/></Link>
+        <Link to='/recipes'>Recipes</Link>
       </nav>
+      {user && <Link to={`/user/${user.username}`} className="iconLink"><img src={user.icon} alt={`${user.displayName}'s icon`}/></Link>}
+      {!user && (
+        <div className="accountButtons">
+          <Link to={`/user/login`} className="button">Login</Link>
+          <Link to={`/user/register`} className="button">Register</Link>
+        </div>
+      )}
+
     </header>
   )
 }

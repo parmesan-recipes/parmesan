@@ -17,6 +17,9 @@
     "standard": "^17.0.0",
     "use-async-effect": "^2.2.6"
   },
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.6"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -46,6 +49,5 @@
     "ignore": [
       "*.test.js"
     ]
-  },
-  "proxy": "http://localhost:8080"
+  }
 }
