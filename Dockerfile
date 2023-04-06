@@ -21,4 +21,7 @@ RUN adduser -S -D -H -h /app appuser
 USER appuser
 COPY --from=builder /usr/src/app/backend/ /app/
 WORKDIR /app
+
+EXPOSE 8080
+
 CMD ["./parmesan"]
