@@ -71,7 +71,6 @@ export function RecipeView () {
         <p>Cooking time: {fmtDuration(recipe.time.cook)}</p>
         <p>Total time: {fmtDuration(recipe.time.cook + recipe.time.prep)}</p>
       </div>
-      
 
       <ul id='images'>
         {recipe.images.map((image) => {
