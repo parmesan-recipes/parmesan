@@ -3,18 +3,18 @@ package main
 import (
 	"net/http"
 
-	"github.com/gin-contrib/cors"
+	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	router := gin.Default()
 
-	router.Use(cors.New(cors.Config{
-		AllowOriginFunc: func(origin string) bool {
-			return true
-		},
-	}))
+	router.Use(static.Serve("/", static.LocalFile("../frontend/build", true)))
+
+	router.NoRoute(func(c *gin.Context) {
+		c.File("../frontend/build/index.html")
+	})
 
 	/* recipe */
 

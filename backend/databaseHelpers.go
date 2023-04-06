@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"io"
+	"os"
 
 	_ "github.com/go-kivik/couchdb/v3"
 	"github.com/go-kivik/kivik/v3"
@@ -11,7 +12,7 @@ import (
 )
 
 func DBConnect() *kivik.Client {
-	client, err := kivik.New("couch", "")
+	client, err := kivik.New("couch", os.Getenv("COUCHDB_CONN_STRING"))
 	if err != nil {
 		panic(err)
 	}

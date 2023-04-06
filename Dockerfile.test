@@ -1,14 +1,28 @@
-FROM node:16 as base
+FROM node:alpine as base
 
 WORKDIR /usr/src/app/frontend
 
 ENV CI=true
 
 COPY frontend/package*.json ./
-RUN npm install
+RUN npm install --omit=dev
 COPY ./frontend .
 RUN npm run lint
 RUN npm run test
 RUN npm run build
 
+FROM golang:alpine as builder
+RUN apk update && apk add --no-cache git
+ADD . /usr/src/app/frontend/
+
 WORKDIR /usr/src/app/backend
+COPY ./backend .
+RUN go get -d -v
+RUN go build -o parmesan .
+
+FROM alpine
+RUN adduser -S -D -H -h /app appuser
+USER appuser
+COPY --from=builder /usr/src/app/backend/ /app/
+WORKDIR /app
+CMD ["./parmesan"]
